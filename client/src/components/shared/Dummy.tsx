@@ -1,0 +1,1 @@
+export const Dummy = () => <p>Dummy component</p>;
