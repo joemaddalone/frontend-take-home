@@ -18,7 +18,7 @@ export const UserList = () => {
 
 	return (
 		<>
-			<Flex align="stretch" gap="2">
+			<Flex align="center" gap="2" pb="3">
 				<CommonSearch
 					onChange={setDebouncedSearch}
 					defaultValue={debouncedSearch}
