@@ -1,1 +1,11 @@
 @import "@radix-ui/themes/styles.css";
+
+tfoot {
+	border-top: 1px solid var(--black-a2);
+}
+
+tbody {
+	.rt-TableRow:hover {
+		background-color: var(--black-a1);
+	}
+}

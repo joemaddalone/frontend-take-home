@@ -11,14 +11,14 @@ export const PagedList = ({
 	columns,
 	rows,
 	search,
-	children
+	children,
 }: {
 	List: React.ComponentType<{ search: string }>;
 	errorMessage: string;
 	columns: number;
 	rows: number;
 	search: string;
-	children?: React.ReactNode
+	children?: React.ReactNode;
 }) => {
 	const [resetKey, setResetKey] = useState(0);
 	const { pageNumber = 1 } = useParams();

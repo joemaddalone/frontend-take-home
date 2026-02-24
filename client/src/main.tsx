@@ -11,6 +11,10 @@ const router = createBrowserRouter([
 		path: "/:activeTab?",
 		element: <App />,
 	},
+	{
+		path: "/:activeTab/:pageNumber",
+		element: <App />,
+	},
 ]);
 
 const root = document.getElementById("root");

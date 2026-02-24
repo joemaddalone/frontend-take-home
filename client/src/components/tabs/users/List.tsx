@@ -5,17 +5,20 @@ import { Text, Strong } from "@radix-ui/themes";
 import { UserCell } from "./UserCell";
 import { CommonTable, TableAlert, ConfirmDialog } from "#shared";
 import { formatDate } from "#utils";
+import { useNavigate, useParams } from "react-router";
 
 export const columnCount = 4;
 export const rowCount = 10;
 
 export const List = ({ search }: { search: string }) => {
+	const navigate = useNavigate();
+	const { pageNumber = 1 } = useParams();
 	const [deletingUser, setDeletingUser] = useState<User | null>(null);
 	const [dialogBusy, setDialogBusy] = useState(false);
 	const [operationError, setOperationError] = useState<string | undefined>(
 		undefined,
 	);
-	const { data } = api.users.get(1, search);
+	const { data } = api.users.get(Number(pageNumber), search);
 	const rolesLookup = useRolesLookup();
 
 	const confirmDelete = async () => {
@@ -98,7 +101,14 @@ export const List = ({ search }: { search: string }) => {
 
 	return (
 		<>
-			<CommonTable data={data} template={columns} actions={actions} />
+			<CommonTable
+				data={data}
+				template={columns}
+				actions={actions}
+				onPageChange={(page: number) => {
+					navigate(`/users/${page}`);
+				}}
+			/>
 			<ConfirmDialog
 				loading={dialogBusy}
 				open={deletingUser !== null}

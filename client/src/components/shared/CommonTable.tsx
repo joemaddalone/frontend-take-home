@@ -1,6 +1,6 @@
 import { Table } from "@radix-ui/themes";
 import { AnimatePresence, motion } from "motion/react";
-import { ActionMenu } from "./ActionMenu";
+import { ActionMenu, Pagination } from "#shared";
 import type { PagedData } from "#types";
 
 const MotionTableRow = motion.create(Table.Row);
@@ -14,6 +14,7 @@ interface CommonTableProps<T> {
 		width?: string;
 		display: (value: T) => React.ReactNode;
 	}[];
+	onPageChange?: (page: number) => void;
 }
 
 const rowAnimation = {
@@ -26,6 +27,7 @@ export const CommonTable = <T extends { id: string }>({
 	data,
 	template,
 	actions,
+	onPageChange,
 }: CommonTableProps<T>) => {
 	return (
 		<Table.Root variant="surface">
@@ -62,17 +64,25 @@ export const CommonTable = <T extends { id: string }>({
 					);
 				})}
 			</Table.Body>
-			{/* {data?.pages > 1 && (
+			{onPageChange && data?.pages > 1 && (
 				<tfoot>
 					<AnimatePresence>
 						<MotionTableRow {...rowAnimation}>
 							<Table.Cell colSpan={template.length + 1}>
-								Pagination here
+								{data && (
+									<Pagination
+										next={data.next}
+										prev={data.prev}
+										onPageChange={(page: number) => {
+											onPageChange(page);
+										}}
+									/>
+								)}
 							</Table.Cell>
 						</MotionTableRow>
 					</AnimatePresence>
 				</tfoot>
-			)} */}
+			)}
 		</Table.Root>
 	);
 };
