@@ -1,6 +1,6 @@
 import { Button, Dialog, Flex, TextField, Text } from "@radix-ui/themes";
 import { useActionState, useState } from "react";
-import { api } from "#api";
+import { api, refreshRolesLookup } from "#api";
 import type { Role } from "#types";
 
 interface EditProps {
@@ -24,6 +24,7 @@ export const Edit = ({ open, onOpenChange, title, role }: EditProps) => {
 				};
 				try {
 					await action(role.id, updatedRole);
+					await refreshRolesLookup();
 					onOpenChange();
 				} catch (_err) {
 					setError("there was an error");

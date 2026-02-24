@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { mutate } from "swr";
 import crudFactory from "./crud";
 import type { Role, User } from "../types";
 
@@ -12,8 +13,14 @@ const ENDPOINTS = {
 const rolesCrud = crudFactory<Role>(ENDPOINTS.ROLES);
 const usersCrud = crudFactory<User>(ENDPOINTS.USERS);
 
+// hack to force lookup refresh without
+// invalidating roles and users cache
+export function refreshRolesLookup() {
+	return mutate('api/roles?page=0');
+}
+
 export function useRolesLookup() {
-	const { data } = rolesCrud.get(undefined, undefined, {
+	const { data } = rolesCrud.get(0, undefined, {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false,
