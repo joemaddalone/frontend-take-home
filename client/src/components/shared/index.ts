@@ -1,2 +1,2 @@
-// placeholder
-export { Dummy } from "./Dummy";
+export { PagedList } from "./PagedList";
+export { TableSuspense } from "./TableSuspense";
