@@ -4,16 +4,18 @@ import { Flex, Box, TextField } from "@radix-ui/themes";
 export const CommonSearch = ({
 	onChange,
 	defaultValue,
+	placeholder = "Search..."
 }: {
 	onChange: (value: string) => void;
 	defaultValue: string;
+	placeholder?: string
 }) => {
 	return (
 		<Flex gap="2" my="8px" width="100%">
 			<Box width="100%">
 				<TextField.Root
 					size="2"
-					placeholder="Search by name…"
+					placeholder={placeholder}
 					defaultValue={defaultValue}
 					onChange={(e) => onChange(e.target.value)}
 				>

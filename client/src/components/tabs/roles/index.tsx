@@ -9,6 +9,8 @@ export const RoleList = () => {
 			<CommonSearch
 				onChange={setDebouncedSearch}
 				defaultValue={debouncedSearch}
+				placeholder="Search by name or description..."
+
 			/>
 			<PagedList
 				search={debouncedSearch}

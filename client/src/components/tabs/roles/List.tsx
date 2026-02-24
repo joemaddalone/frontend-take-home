@@ -3,11 +3,14 @@ import type { Role } from "#types";
 import { Text } from "@radix-ui/themes";
 import { CheckCircledIcon, CrossCircledIcon } from "@radix-ui/react-icons";
 import { CommonTable, TableAlert } from "#shared";
+import { Edit } from "./Edit";
+import { useState } from "react";
 
 export const columnCount = 4;
 export const rowCount = 6;
 
 export const List = ({ search }: { search: string }) => {
+	const [editingRole, setEditingRole] = useState<Role | null>(null);
 	const { data } = api.roles.get(1, search);
 
 	if (!data || data.data.length === 0) {
@@ -55,10 +58,10 @@ export const List = ({ search }: { search: string }) => {
 
 	const actions = [
 		{
-			label: "Edit role",
+			label: "Edit",
 			id: "edit",
 			actionFn: (role: Role) => {
-				console.log("edit", role);
+				setEditingRole(role);
 			},
 		},
 		{
@@ -70,5 +73,15 @@ export const List = ({ search }: { search: string }) => {
 		},
 	];
 
-	return <CommonTable data={data} template={columns} actions={actions} />;
+	return (
+		<>
+			<CommonTable data={data} template={columns} actions={actions} />
+			<Edit
+				role={editingRole}
+				open={editingRole !== null}
+				onOpenChange={() => setEditingRole(null)}
+				title="Edit Role"
+			/>
+		</>
+	);
 };

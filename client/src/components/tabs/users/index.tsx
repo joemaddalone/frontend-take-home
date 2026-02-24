@@ -9,6 +9,7 @@ export const UserList = () => {
 			<CommonSearch
 				onChange={setDebouncedSearch}
 				defaultValue={debouncedSearch}
+				placeholder="Search by name..."
 			/>
 			<PagedList
 				search={debouncedSearch}
