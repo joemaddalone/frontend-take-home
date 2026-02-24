@@ -36,7 +36,7 @@ export const List = ({ search }: { search: string }) => {
 		{
 			label: "Name",
 			id: "name",
-			width: "301px",
+			width: "200px",
 			display: (role: Role) => <Text>{role.name}</Text>,
 		},
 		{

@@ -6,11 +6,11 @@ export const UserCell = ({ user }: { user: User }) => {
 		<Flex gap="3" align="center">
 			<Avatar
 				radius="full"
-				size="2"
+				size="1"
 				src={user.photo}
 				fallback={`${user.first.charAt(0)}${user.last.charAt(0)}`}
 			/>
-			<Text>
+			<Text size="2">
 				{user.first} {user.last}
 			</Text>
 		</Flex>

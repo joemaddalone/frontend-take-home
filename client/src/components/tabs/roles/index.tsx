@@ -18,14 +18,14 @@ export const RoleList = () => {
 
 	return (
 		<>
-			<Flex align="center" gap="2">
+			<Flex align="center" gap="2" pb="3">
 				<CommonSearch
 					onChange={setDebouncedSearch}
 					defaultValue={debouncedSearch}
 					placeholder="Search by name..."
 					busy={isPending && debouncedSearch !== ""}
 				/>
-				<Button disabled={isPending}>
+				<Button disabled={isPending} className="button-match">
 					<PlusIcon /> Add role
 				</Button>
 			</Flex>

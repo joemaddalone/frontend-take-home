@@ -18,14 +18,14 @@ export const UserList = () => {
 
 	return (
 		<>
-			<Flex align="center" gap="2">
+			<Flex align="stretch" gap="2">
 				<CommonSearch
 					onChange={setDebouncedSearch}
 					defaultValue={debouncedSearch}
 					placeholder="Search by name..."
 					busy={isPending && debouncedSearch !== ""}
 				/>
-				<Button disabled={isPending}>
+				<Button disabled={isPending} className="button-match">
 					<PlusIcon /> Add user
 				</Button>
 			</Flex>

@@ -1,4 +1,4 @@
-import { DropdownMenu, IconButton } from "@radix-ui/themes";
+import { DropdownMenu, IconButton, Text } from "@radix-ui/themes";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
 interface Action<T> {
@@ -32,11 +32,12 @@ export const ActionMenu = <T extends { id: string }>({
 			<DropdownMenu.Content side="bottom" align="end">
 				{actions.map((action: Action<T>) => (
 					<DropdownMenu.Item
+						className="button-match-hover"
 						key={action.id}
 						data-testid={action.id}
 						onClick={() => action.actionFn(item)}
 					>
-						{action.label}
+						<Text size="2">{action.label}</Text>
 					</DropdownMenu.Item>
 				))}
 			</DropdownMenu.Content>
