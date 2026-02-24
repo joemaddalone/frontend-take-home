@@ -12,9 +12,9 @@ export const List = ({ search }: { search: string; }) => {
 
 	if (!data || data.data.length === 0) {
 		if (search === "") {
-			return <TableAlert columns={columnCount} rows={rowCount} message={`No users have joined yet`} />
+			return <TableAlert columns={columnCount} rows={rowCount} message={`No users have joined yet`} />;
 		}
-		return <TableAlert columns={columnCount} rows={rowCount} message={`No results for "${search}"`} />
+		return <TableAlert columns={columnCount} rows={rowCount} message={`No results for "${search}"`} />;
 	}
 
 	const columns = [
@@ -43,12 +43,18 @@ export const List = ({ search }: { search: string; }) => {
 
 	const actions = [
 		{
-			label: "Edit user",
+			label: "Edit role",
 			id: "edit",
+			actionFn: (role: Role) => {
+				console.log("edit", role);
+			},
 		},
 		{
-			label: "Delete user",
+			label: "Delete role",
 			id: "delete",
+			actionFn: (role: Role) => {
+				console.log("delete", role);
+			},
 		},
 	];
 
@@ -62,4 +68,4 @@ export const List = ({ search }: { search: string; }) => {
 			actions={actions}
 		/>
 	);
-}
+};

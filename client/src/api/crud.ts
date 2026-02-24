@@ -1,6 +1,6 @@
 import type { SWRConfiguration } from "swr";
 import type { PagedData } from "../types";
-import useSWR from "swr";
+import useSWR, { mutate} from "swr";
 
 // mostly lifted from https://github.com/vercel/swr/blob/main/examples/basic-typescript/libs/fetch.ts
 export async function fetcher<JSON>(
@@ -52,8 +52,32 @@ const crudFactory = <T extends { id?: string }>(endpoint: string) => {
     return useRequest<PagedData<T>>(url, options);
   };
 
+  	const remove = async (id: string) => {
+		const url = `${endpoint}/${id}`;
+		const promise = fetcher<{ id: string }>(url, {
+			method: "DELETE",
+		});
+
+		mutate(
+			(key) => typeof key === "string" && key.startsWith(endpoint),
+			(currentData: PagedData<T> | undefined) => {
+				if (!currentData) return currentData;
+				return {
+					...currentData,
+					data: currentData.data.filter((i) => i.id !== id),
+				};
+			},
+			{ revalidate: false },
+		);
+
+		const result = await promise;
+		mutate((key) => typeof key === "string" && key.startsWith(endpoint));
+		return result;
+	};
+
   return {
-    get
+    get,
+    remove,
   };
 };
 

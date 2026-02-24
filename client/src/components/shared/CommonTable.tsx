@@ -1,13 +1,13 @@
 import { Table } from "@radix-ui/themes";
 import { AnimatePresence, motion } from "motion/react";
-import { DotsHorizontalIcon } from "@radix-ui/react-icons";
+import { ActionMenu } from "./ActionMenu";
 import type { PagedData } from "#types";
 
 const MotionTableRow = motion.create(Table.Row);
 
 interface CommonTableProps<T> {
 	data: PagedData<T>;
-	actions?: { label: string; id: string; }[];
+	actions?: { label: string; id: string; actionFn: (value: T) => void }[];
 	template: {
 		label: string;
 		id: string;
@@ -57,7 +57,7 @@ export const CommonTable = <T extends { id: string }>({
 								))}
 								{actions && (
 									<Table.Cell style={{ textAlign: "right", width: "100px" }}>
-										<DotsHorizontalIcon />
+										<ActionMenu actions={actions} item={row} />
 									</Table.Cell>
 								)}
 							</MotionTableRow>
