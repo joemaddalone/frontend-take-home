@@ -14,7 +14,6 @@ export const CommonSearch = ({
 		<Flex gap="2" my="8px" width="100%">
 			<Box width="100%">
 				<TextField.Root
-					size="2"
 					placeholder={placeholder}
 					defaultValue={defaultValue}
 					onChange={(e) => onChange(e.target.value)}
