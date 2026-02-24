@@ -12,7 +12,7 @@ export const PagedList = ({
 	rows,
 	search,
 }: {
-	List: React.ComponentType<{ search: string; }>;
+	List: React.ComponentType<{ search: string }>;
 	errorMessage: string;
 	columns: number;
 	rows: number;
@@ -23,15 +23,20 @@ export const PagedList = ({
 
 	const retry = (reset: () => void) => {
 		setResetKey((k) => k + 1);
-		reset()
-	}
+		reset();
+	};
 
 	return (
 		<ErrorBoundary
 			key={`${resetKey}-${pageNumber}`}
 			onReset={() => mutate(() => true, undefined, { revalidate: true })}
 			fallbackRender={({ resetErrorBoundary }) => (
-				<TableAlert  columns={columns} rows={rows} message={errorMessage} onRetry={() => retry(resetErrorBoundary)} />
+				<TableAlert
+					columns={columns}
+					rows={rows}
+					message={errorMessage}
+					onRetry={() => retry(resetErrorBoundary)}
+				/>
 			)}
 		>
 			<TableSuspense columns={columns} rows={rows}>

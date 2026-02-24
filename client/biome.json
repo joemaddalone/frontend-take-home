@@ -6,11 +6,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": [
-			"**",
-			"!node_modules",
-			"!dist"
-		]
+		"includes": ["**", "!node_modules", "!dist"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -37,10 +33,7 @@
 	},
 	"overrides": [
 		{
-			"includes": [
-				"**/*.test.ts",
-				"**/*.test.tsx"
-			],
+			"includes": ["**/*.test.ts", "**/*.test.tsx"],
 			"linter": {
 				"rules": {
 					"suspicious": {

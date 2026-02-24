@@ -6,7 +6,10 @@ export const RoleList = () => {
 	const [debouncedSearch, setDebouncedSearch] = useDebounceValue("", 500);
 	return (
 		<>
-			<CommonSearch onChange={setDebouncedSearch} defaultValue={debouncedSearch} />
+			<CommonSearch
+				onChange={setDebouncedSearch}
+				defaultValue={debouncedSearch}
+			/>
 			<PagedList
 				search={debouncedSearch}
 				columns={columnCount}

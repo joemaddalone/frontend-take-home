@@ -5,4 +5,4 @@ export const formatDate = (dateString: string) => {
 		day: "numeric",
 	};
 	return new Date(dateString).toLocaleDateString(undefined, options);
-}
+};

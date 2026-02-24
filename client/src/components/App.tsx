@@ -14,7 +14,10 @@ export const App = () => {
 	};
 	return (
 		<Container size="3">
-			<Tabs.Root value={activeTab || DEFAULT_TAB} onValueChange={handleTabChange}>
+			<Tabs.Root
+				value={activeTab || DEFAULT_TAB}
+				onValueChange={handleTabChange}
+			>
 				<Tabs.List>
 					<Tabs.Trigger value="users">Users</Tabs.Trigger>
 					<Tabs.Trigger value="roles">Roles</Tabs.Trigger>

@@ -12,7 +12,7 @@ interface CommonTableActionProps<T> {
 	actions: Action<T>[];
 }
 
-export const ActionMenu = <T extends { id: string; }>({
+export const ActionMenu = <T extends { id: string }>({
 	actions,
 	item,
 }: CommonTableActionProps<T>) => {

@@ -7,14 +7,26 @@ import { CommonTable, TableAlert } from "#shared";
 export const columnCount = 4;
 export const rowCount = 6;
 
-export const List = ({ search }: { search: string; }) => {
+export const List = ({ search }: { search: string }) => {
 	const { data } = api.roles.get(1, search);
 
 	if (!data || data.data.length === 0) {
 		if (search === "") {
-			return <TableAlert columns={columnCount} rows={rowCount} message={`No users have joined yet`} />;
+			return (
+				<TableAlert
+					columns={columnCount}
+					rows={rowCount}
+					message={`No users have joined yet`}
+				/>
+			);
 		}
-		return <TableAlert columns={columnCount} rows={rowCount} message={`No results for "${search}"`} />;
+		return (
+			<TableAlert
+				columns={columnCount}
+				rows={rowCount}
+				message={`No results for "${search}"`}
+			/>
+		);
 	}
 
 	const columns = [
@@ -58,14 +70,5 @@ export const List = ({ search }: { search: string; }) => {
 		},
 	];
 
-
-
-
-	return (
-		<CommonTable
-			data={data}
-			template={columns}
-			actions={actions}
-		/>
-	);
+	return <CommonTable data={data} template={columns} actions={actions} />;
 };

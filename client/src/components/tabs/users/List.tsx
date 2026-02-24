@@ -9,7 +9,7 @@ import { formatDate } from "#utils";
 export const columnCount = 4;
 export const rowCount = 10;
 
-export const List = ({ search }: { search: string; }) => {
+export const List = ({ search }: { search: string }) => {
 	const [deletingUser, setDeletingUser] = useState<User | null>(null);
 	const [dialogBusy, setDialogBusy] = useState(false);
 	const [operationError, setOperationError] = useState<string | undefined>(
@@ -109,7 +109,9 @@ export const List = ({ search }: { search: string; }) => {
 				actionLabel="Delete User"
 			>
 				<Text>
-					Are you sure? The user <Strong>{userName(deletingUser ?? undefined)}</Strong> will be permanently deleted.
+					Are you sure? The user{" "}
+					<Strong>{userName(deletingUser ?? undefined)}</Strong> will be
+					permanently deleted.
 				</Text>
 			</ConfirmDialog>
 		</>

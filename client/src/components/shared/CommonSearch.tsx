@@ -1,9 +1,14 @@
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Flex, Box, TextField } from "@radix-ui/themes";
 
-export const CommonSearch = ({ onChange, defaultValue }: { onChange: (value: string) => void; defaultValue: string }) => {
+export const CommonSearch = ({
+	onChange,
+	defaultValue,
+}: {
+	onChange: (value: string) => void;
+	defaultValue: string;
+}) => {
 	return (
-
 		<Flex gap="2" my="8px" width="100%">
 			<Box width="100%">
 				<TextField.Root
@@ -18,6 +23,5 @@ export const CommonSearch = ({ onChange, defaultValue }: { onChange: (value: str
 				</TextField.Root>
 			</Box>
 		</Flex>
-
 	);
 };

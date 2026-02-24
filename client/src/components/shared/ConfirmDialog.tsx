@@ -33,7 +33,12 @@ export const ConfirmDialog = ({
 							Cancel
 						</Button>
 					</AlertDialog.Cancel>
-					<Button variant="soft" color="red" onClick={onConfirm} loading={loading}>
+					<Button
+						variant="soft"
+						color="red"
+						onClick={onConfirm}
+						loading={loading}
+					>
 						{error ? "Try again" : actionLabel || "Confirm"}
 					</Button>
 					{error && (

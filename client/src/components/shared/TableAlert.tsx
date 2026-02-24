@@ -33,9 +33,9 @@ export const TableAlert = ({
 								{message}
 							</Text>
 							{onRetry && (
-							<Button onClick={onRetry} style={{ marginBottom: "16px" }}>
-								Retry
-							</Button>
+								<Button onClick={onRetry} style={{ marginBottom: "16px" }}>
+									Retry
+								</Button>
 							)}
 						</Flex>
 					</Card>
