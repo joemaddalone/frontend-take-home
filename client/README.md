@@ -4,7 +4,7 @@
 
 **Start the Client App**:
 - Ensure you have the latest version of Node.js.
-- Run the following commands to install dependencies and start the API:
+- Run the following commands to install dependencies and start the app:
   ```bash
   cd client
   npm install
