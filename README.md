@@ -1,5 +1,13 @@
 # Frontend Take-Home Assignment
 
+
+
+**Client app instructions**
+
+Instructions for running the client application can be found [here](https://github.com/joemaddalone/frontend-take-home/blob/main/client/README.md)
+
+---
+
 Welcome to the WorkOS Frontend Take-Home Assignment!
 
 In this exercise, you'll implement the UI for a simple two-tab layout that lists users and roles. You will also add limited functionality to update users and roles.

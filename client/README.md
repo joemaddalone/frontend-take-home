@@ -31,7 +31,10 @@
 4. **Add more features**
      - The overall foundation is already in place to interact with the API more fully.  Given time I'd flesh out the remaining, implied functionality like fully edit Roles, create Users, etc.
 5. **Add more documentation**
-   - I would add more documentation to the application to make it easier to understand and use.
+   - document patterns to follow for
+     - testing
+     - component development
+     - client api usage
 6. **Dig more into these libraries**
    - I used this test as an opportunity to learn about some new-to-me tools, namely radix-themes and swr.  There is a ton more potential to continue learning here.
      - radix-themes: awesome, still more to learn.
