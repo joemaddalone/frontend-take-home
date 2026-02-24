@@ -4,18 +4,12 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { Theme } from "@radix-ui/themes";
 import { App } from "#components/App";
 import { themeConfig } from "./config/theme";
-import { api } from "./api";
 import "./styles/index.css";
 
 const router = createBrowserRouter([
 	{
-		path: "/",
+		path: "/:activeTab?",
 		element: <App />,
-		loader: async () => {
-			const users = await api.users.get(1);
-			console.log({ users }) ;
-			return { users }
-		}
 	},
 ]);
 
