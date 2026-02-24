@@ -39,7 +39,6 @@ const useRequest = <T>(
   };
 };
 
-// TODO: R-only atm, expand to include C,U, & D.
 const crudFactory = <T extends { id?: string }>(endpoint: string) => {
   const get = (page?: number, search?: string, options?: SWRConfiguration) => {
     const query = new URLSearchParams();
