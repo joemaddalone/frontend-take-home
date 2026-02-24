@@ -1,4 +1,4 @@
-import { api } from "#api";
+import { api, useRolesLookup } from "#api";
 import type { User } from "#types";
 import { Text } from "@radix-ui/themes";
 import { UserCell } from "./UserCell";
@@ -10,6 +10,7 @@ export const rowCount = 10;
 
 export const List = ({ search }: { search: string }) => {
 	const { data } = api.users.get(1, search);
+	const rolesLookup = useRolesLookup();
 
 	if (!data || data.data.length === 0) {
 		if (search === "") {
@@ -38,10 +39,12 @@ export const List = ({ search }: { search: string }) => {
 			display: (user: User) => <UserCell user={user} />,
 		},
 		{
-			label: "Group",
-			id: "group",
+			label: "Role",
+			id: "role",
 			width: "277px",
-			display: (user: User) => <Text>{user.roleId}</Text>,
+			display: (user: User) => (
+				<Text>{rolesLookup[user.roleId]?.name || "Unknown"}</Text>
+			),
 		},
 		{
 			label: "Joined",

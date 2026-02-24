@@ -13,7 +13,7 @@ export const App = () => {
 		navigate(`/${tab}`);
 	};
 	return (
-		<Container>
+		<Container size="3">
 			<Tabs.Root value={activeTab || DEFAULT_TAB} onValueChange={handleTabChange}>
 				<Tabs.List>
 					<Tabs.Trigger value="users">Users</Tabs.Trigger>
