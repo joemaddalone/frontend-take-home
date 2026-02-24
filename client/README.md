@@ -18,7 +18,7 @@
 - `npm run lint` - run biome linting
 - `npm run preview` - serve a production build
 - `npm run vitest run` - run unit tests
-- `npm run test:watch` - un unit tests in "watch" mode
+- `npm run test:watch` - run unit tests in "watch" mode
 
 ###  What you would improve or do differently if you had more time.
 
@@ -27,7 +27,7 @@
 2. **I18n**
    - I just didn't get to it, but I would prioritize this.
 3. **Responsive design**
-   - I did not spend a ton of time on responsive design, the app works at various sizes, but there is room for a more a deliberate "small screen" implementation.
+   - I did not spend a ton of time on responsive design, the app works at various sizes, but there is room for a more deliberate "small screen" implementation.
 4. **Add more features**
      - The overall foundation is already in place to interact with the API more fully.  Given time I'd flesh out the remaining, implied functionality like fully edit Roles, create Users, etc.
 5. **Add more documentation**
