@@ -22,7 +22,7 @@ export const RoleList = () => {
 				<CommonSearch
 					onChange={setDebouncedSearch}
 					defaultValue={debouncedSearch}
-					placeholder="Search by name..."
+					placeholder="Search by name or description..."
 					busy={isPending && debouncedSearch !== ""}
 				/>
 				<Button disabled={isPending} className="button-match">
