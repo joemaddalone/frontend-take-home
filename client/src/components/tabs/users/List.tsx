@@ -9,8 +9,8 @@ import { formatDate } from "#utils";
 export const columns = 4;
 export const rows = 10;
 
-export const List = () => {
-	const { data } = api.users.get(1);
+export const List = ({ search }: { search: string; }) => {
+	const { data } = api.users.get(1, search);
 
 	if (!data) return null;
 
@@ -54,4 +54,4 @@ export const List = () => {
 			actions={actions}
 		/>
 	);
-}
+};

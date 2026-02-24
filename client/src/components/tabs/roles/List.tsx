@@ -7,8 +7,8 @@ import { CommonTable } from "#shared";
 export const columns = 4;
 export const rows = 6;
 
-export const List = () => {
-	const { data } = api.roles.get(1);
+export const List = ({ search }: { search: string; }) => {
+	const { data } = api.roles.get(1, search);
 
 	const columns = [
 		{

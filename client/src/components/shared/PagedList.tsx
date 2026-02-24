@@ -10,11 +10,13 @@ export const PagedList = ({
 	errorMessage,
 	columns,
 	rows,
+	search,
 }: {
-	List: React.ComponentType;
+	List: React.ComponentType<{ search: string; }>;
 	errorMessage: string;
 	columns: number;
 	rows: number;
+	search: string;
 }) => {
 	const [resetKey, setResetKey] = useState(0);
 	const { pageNumber = 1 } = useParams();
@@ -37,7 +39,7 @@ export const PagedList = ({
 			)}
 		>
 			<TableSuspense columns={columns} rows={rows}>
-				<List />
+				<List search={search} />
 			</TableSuspense>
 		</ErrorBoundary>
 	);
