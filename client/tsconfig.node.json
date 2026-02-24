@@ -23,7 +23,8 @@
 			"#components/*": ["./src/components/*"],
 			"#shared/*": ["./src/components/shared/index.ts"],
 			"#types/*": ["./src/types/index.ts"],
-			"#api/*": ["./src/api/index.ts"]
+			"#api/*": ["./src/api/index.ts"],
+			"#utils/*": ["./src/utils/index.ts"]
 		}
 	},
 	"include": ["vite.config.ts"]

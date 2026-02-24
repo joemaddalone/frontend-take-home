@@ -1,4 +1,10 @@
 import { api } from "#api";
+import type { User } from "#types";
+import { Text } from "@radix-ui/themes";
+import { UserCell } from "./UserCell";
+import { CommonTable } from "#shared";
+import { formatDate } from "#utils";
+
 
 export const columns = 4;
 export const rows = 10;
@@ -8,10 +14,44 @@ export const List = () => {
 
 	if (!data) return null;
 
-	return (
+	const columns = [
+		{
+			label: "User",
+			id: "user",
+			width: "301px",
+			display: (user: User) => <UserCell user={user} />,
+		},
+		{
+			label: "Group",
+			id: "group",
+			width: "277px",
+			display: (user: User) => (
+				<Text>{user.roleId}</Text>
+			),
+		},
+		{
+			label: "Joined",
+			id: "joined",
+			width: "236px",
+			display: (user: User) => (
+				<Text>{formatDate(user.createdAt)}</Text>
+			),
+		},
+	];
 
-		<pre>
-			{JSON.stringify(data, null, 2)}
-		</pre>
+	const actions = [
+		{
+			label: "Delete",
+			id: "delete",
+		},
+	];
+
+
+	return (
+		<CommonTable
+			data={data}
+			template={columns}
+			actions={actions}
+		/>
 	);
 }
