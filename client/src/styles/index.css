@@ -25,9 +25,9 @@ tbody {
 
 /* Not my proudest moment - hard coded these to match figma for now */
 .button-match {
-	background-color: #6565EC !important
+	background-color: #6565ec;
 }
 
 .button-match-hover:hover {
-	background-color: #6565EC !important
+	background-color: #6565ec;
 }

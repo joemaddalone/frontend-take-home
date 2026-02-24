@@ -16,7 +16,7 @@ const usersCrud = crudFactory<User>(ENDPOINTS.USERS);
 // hack to force lookup refresh without
 // invalidating roles and users cache
 export function refreshRolesLookup() {
-	return mutate('api/roles?page=0');
+	return mutate("api/roles?page=0");
 }
 
 export function useRolesLookup() {
