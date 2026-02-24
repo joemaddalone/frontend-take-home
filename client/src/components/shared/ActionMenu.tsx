@@ -19,7 +19,13 @@ export const ActionMenu = <T extends { id: string }>({
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger>
-				<IconButton variant="ghost" radius="full" size="2">
+				<IconButton
+					variant="ghost"
+					radius="full"
+					size="2"
+					aria-label="Actions"
+					data-testid="action-menu-trigger"
+				>
 					<DotsHorizontalIcon />
 				</IconButton>
 			</DropdownMenu.Trigger>
@@ -27,6 +33,7 @@ export const ActionMenu = <T extends { id: string }>({
 				{actions.map((action: Action<T>) => (
 					<DropdownMenu.Item
 						key={action.id}
+						data-testid={action.id}
 						onClick={() => action.actionFn(item)}
 					>
 						{action.label}
