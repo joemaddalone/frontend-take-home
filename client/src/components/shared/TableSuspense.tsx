@@ -8,7 +8,7 @@ interface TableSuspenseProps {
 	rows: number;
 }
 
-const SkeletonTable = ({
+export const SkeletonTable = ({
 	columns,
 	rows,
 }: {

@@ -2,13 +2,20 @@ import { api } from "#api";
 import type { Role } from "#types";
 import { Text } from "@radix-ui/themes";
 import { CheckCircledIcon, CrossCircledIcon } from "@radix-ui/react-icons";
-import { CommonTable } from "#shared";
+import { CommonTable, TableAlert } from "#shared";
 
-export const columns = 4;
-export const rows = 6;
+export const columnCount = 4;
+export const rowCount = 6;
 
 export const List = ({ search }: { search: string; }) => {
 	const { data } = api.roles.get(1, search);
+
+	if (!data || data.data.length === 0) {
+		if (search === "") {
+			return <TableAlert columns={columnCount} rows={rowCount} message={`No users have joined yet`} />
+		}
+		return <TableAlert columns={columnCount} rows={rowCount} message={`No results for "${search}"`} />
+	}
 
 	const columns = [
 		{
@@ -44,7 +51,7 @@ export const List = ({ search }: { search: string; }) => {
 		},
 	];
 
-	if (!data) return null;
+
 
 
 	return (

@@ -2,17 +2,33 @@ import { api } from "#api";
 import type { User } from "#types";
 import { Text } from "@radix-ui/themes";
 import { UserCell } from "./UserCell";
-import { CommonTable } from "#shared";
+import { CommonTable, TableAlert } from "#shared";
 import { formatDate } from "#utils";
 
+export const columnCount = 4;
+export const rowCount = 10;
 
-export const columns = 4;
-export const rows = 10;
-
-export const List = ({ search }: { search: string; }) => {
+export const List = ({ search }: { search: string }) => {
 	const { data } = api.users.get(1, search);
 
-	if (!data) return null;
+	if (!data || data.data.length === 0) {
+		if (search === "") {
+			return (
+				<TableAlert
+					columns={columnCount}
+					rows={rowCount}
+					message={`No users have joined yet`}
+				/>
+			);
+		}
+		return (
+			<TableAlert
+				columns={columnCount}
+				rows={rowCount}
+				message={`No results for "${search}"`}
+			/>
+		);
+	}
 
 	const columns = [
 		{
@@ -25,17 +41,13 @@ export const List = ({ search }: { search: string; }) => {
 			label: "Group",
 			id: "group",
 			width: "277px",
-			display: (user: User) => (
-				<Text>{user.roleId}</Text>
-			),
+			display: (user: User) => <Text>{user.roleId}</Text>,
 		},
 		{
 			label: "Joined",
 			id: "joined",
 			width: "236px",
-			display: (user: User) => (
-				<Text>{formatDate(user.createdAt)}</Text>
-			),
+			display: (user: User) => <Text>{formatDate(user.createdAt)}</Text>,
 		},
 	];
 
@@ -46,12 +58,5 @@ export const List = ({ search }: { search: string; }) => {
 		},
 	];
 
-
-	return (
-		<CommonTable
-			data={data}
-			template={columns}
-			actions={actions}
-		/>
-	);
+	return <CommonTable data={data} template={columns} actions={actions} />;
 };

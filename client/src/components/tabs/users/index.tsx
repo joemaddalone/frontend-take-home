@@ -1,5 +1,5 @@
 import { useDebounceValue } from "usehooks-ts";
-import { List, columns, rows } from "./List";
+import { List, columnCount, rowCount } from "./List";
 import { PagedList, CommonSearch } from "#shared";
 
 export const UserList = () => {
@@ -9,8 +9,8 @@ export const UserList = () => {
 			<CommonSearch onChange={setDebouncedSearch} defaultValue={debouncedSearch} />
 			<PagedList
 				search={debouncedSearch}
-				columns={columns}
-				rows={rows}
+				columns={columnCount}
+				rows={rowCount}
 				List={List}
 				errorMessage="Could not fetch users."
 			/>

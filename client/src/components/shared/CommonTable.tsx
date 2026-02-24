@@ -22,11 +22,14 @@ const rowAnimation = {
 	exit: { opacity: 0, y: -20 },
 };
 
+
+
 export const CommonTable = <T extends { id: string }>({
 	data,
 	template,
 	actions,
 }: CommonTableProps<T>) => {
+
 	return (
 		<Table.Root variant="surface">
 			<Table.Header>
