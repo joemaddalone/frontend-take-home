@@ -9,9 +9,9 @@ import { useState } from "react";
 export const columnCount = 4;
 export const rowCount = 6;
 
-export const List = ({ search }: { search: string }) => {
+export const List = ({ search }: { search: string; }) => {
 	const [editingRole, setEditingRole] = useState<Role | null>(null);
-	const { data } = api.roles.get(1, search);
+	const { data } = api.roles.get(1, search, { revalidateOnMount: false });
 
 	if (!data || data.data.length === 0) {
 		if (search === "") {

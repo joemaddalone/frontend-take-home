@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router";
 export const columnCount = 4;
 export const rowCount = 10;
 
-export const List = ({ search }: { search: string }) => {
+export const List = ({ search }: { search: string; }) => {
 	const navigate = useNavigate();
 	const { pageNumber = 1 } = useParams();
 	const [deletingUser, setDeletingUser] = useState<User | null>(null);
@@ -18,7 +18,9 @@ export const List = ({ search }: { search: string }) => {
 	const [operationError, setOperationError] = useState<string | undefined>(
 		undefined,
 	);
-	const { data } = api.users.get(Number(pageNumber), search);
+	const { data } = api.users.get(Number(pageNumber), search, {
+		revalidateOnMount: false,
+	});
 	const rolesLookup = useRolesLookup();
 
 	const confirmDelete = async () => {
